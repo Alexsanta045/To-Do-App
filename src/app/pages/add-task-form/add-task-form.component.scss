@@ -1,0 +1,9 @@
+.form-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  margin-bottom: 4px;
+}
+
+.required {
+  color: var(--ion-color-danger);
+}
