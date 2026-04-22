@@ -1,7 +1,7 @@
 {
-  "name": "todoApp",
+  "name": "To-Do App",
   "integrations": {
-    "capacitor": {}
+    "cordova": {}
   },
   "type": "angular-standalone"
 }

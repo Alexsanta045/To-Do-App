@@ -1,5 +1,5 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { RouteReuseStrategy, provideRouter, withPreloading, PreloadAllModules } from '@angular/router';
+import { RouteReuseStrategy, provideRouter, withPreloading, PreloadAllModules, withHashLocation } from '@angular/router';
 import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideRemoteConfig, getRemoteConfig } from '@angular/fire/remote-config';
@@ -12,7 +12,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
-    provideRouter(routes, withPreloading(PreloadAllModules)),
+    provideRouter(routes, withPreloading(PreloadAllModules), withHashLocation()),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideRemoteConfig(() => getRemoteConfig()),
   ],

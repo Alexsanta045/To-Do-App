@@ -1,9 +1,25 @@
-.form-item {
-  --padding-start: 0;
-  --inner-padding-end: 0;
-  margin-bottom: 4px;
+ion-content {
+  --background: var(--ion-background-color);
+}
+
+.form-body {
+  padding: 24px 20px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-input {
+  --border-radius: 12px;
+  --highlight-color-focused: var(--ion-color-primary);
+  font-size: 15px;
 }
 
 .required {
   color: var(--ion-color-danger);
+  font-weight: 700;
 }

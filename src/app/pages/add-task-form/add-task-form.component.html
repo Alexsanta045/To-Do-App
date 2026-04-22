@@ -1,46 +1,63 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Nueva Tarea</ion-title>
+    <ion-title>{{ isEditing ? 'Actualizar Tarea' : 'Nueva Tarea' }}</ion-title>
     <ion-buttons slot="start">
-      <ion-button color="light">Cancelar</ion-button>
+      <ion-button (click)="cancel()" color="light">Cancelar</ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button [disabled]="form.invalid" color="light" strong>
-        Agregar
+      <ion-button (click)="submit()" [disabled]="form.invalid" color="light" strong>
+        {{ isEditing ? 'Guardar' : 'Agregar' }}
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <form [formGroup]="form">
-    <ion-item class="form-item">
-      <ion-label position="stacked">Título <span class="required">*</span></ion-label>
+<ion-content>
+  <form [formGroup]="form" class="form-body">
+
+    <div class="form-group">
       <ion-input
+        label="Título"
+        label-placement="stacked"
+        fill="outline"
         formControlName="title"
         placeholder="¿Qué necesitas hacer?"
         [clearInput]="true"
         autocapitalize="sentences"
-      ></ion-input>
-    </ion-item>
+        class="form-input"
+      >
+        <span slot="label">Título <span class="required">*</span></span>
+      </ion-input>
+    </div>
 
-    <ion-item class="form-item ion-margin-top">
-      <ion-label position="stacked">Descripción (opcional)</ion-label>
+    <div class="form-group">
       <ion-textarea
+        label="Descripción (opcional)"
+        label-placement="stacked"
+        fill="outline"
         formControlName="description"
         placeholder="Añade más detalles..."
         [rows]="3"
         [autoGrow]="true"
+        class="form-input"
       ></ion-textarea>
-    </ion-item>
+    </div>
 
-    <ion-item class="form-item ion-margin-top">
-      <ion-label position="stacked">Categoría</ion-label>
-      <ion-select formControlName="category" interface="popover" placeholder="Selecciona una categoría">
+    <div class="form-group">
+      <ion-select
+        label="Categoría"
+        label-placement="stacked"
+        fill="outline"
+        formControlName="category"
+        interface="popover"
+        placeholder="Selecciona una categoría"
+        class="form-input"
+      >
         @for (cat of categories; track cat.value) {
           <ion-select-option [value]="cat.value">{{ cat.label }}</ion-select-option>
         }
       </ion-select>
-    </ion-item>
+    </div>
+
   </form>
 </ion-content>
